@@ -10,6 +10,7 @@ export async function GET() {
     );
 
     res.cookies.set("token", "", { httpOnly: true });
+    return NextResponse;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
