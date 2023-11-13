@@ -34,10 +34,8 @@ const Page = (props: Props) => {
     try {
       const res = await axios.post("/api/users/signup", values);
       console.log(res.data);
-      toast({
-        title: res.data,
-      });
       router.push("/login");
+      router.refresh();
     } catch (error: any) {
       toast({
         variant: "destructive",
