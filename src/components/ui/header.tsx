@@ -19,7 +19,14 @@ export default function Header() {
         ];
 
   return pathname === "/login" || pathname === "/signup" ? null : (
-    <header className="bg-white">
+    <header
+      className="bg-white"
+      style={{
+        position: "fixed",
+        width: "100%",
+        background: "rgba(215, 202, 202, 0.15)",
+      }}
+    >
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -47,6 +54,7 @@ export default function Header() {
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
             <Link
+              style={{ color: "white" }}
               key={item.name}
               href={item.href}
               className="text-sm font-semibold leading-6 text-gray-900"
@@ -56,7 +64,11 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a
+            style={{ color: "white" }}
+            href="#"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
             Log out <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
