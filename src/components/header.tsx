@@ -1,26 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import axios from "axios";
-import { User, useAuthContext } from "@/context/authContext";
-import jwt from "jsonwebtoken";
 
 export default function Header() {
-  const { setUser } = useAuthContext();
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get("/api/users/me");
-      const { token } = await res.data;
-
-      const decodedToken = jwt.decode(token);
-      setUser(decodedToken as User);
-    })();
-  }, []);
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 

@@ -17,7 +17,7 @@ import { loginFormSchema } from "@/validationSchemas/loginValidation";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster";
-import { User } from "../../../context/authContext";
+import { signIn } from "next-auth/react";
 
 type Props = {};
 
@@ -30,18 +30,41 @@ const Page = (props: Props) => {
   });
 
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    try {
-      const res = await axios.post("/api/users/login", values);
-      router.push("/");
-      router.refresh();
-    } catch (error: any) {
-      console.log(error);
+    const signInData = await signIn("credentials", {
+      email: values.email,
+      password: values.password,
+      redirect: false,
+    });
+
+    if (signInData?.error) {
+      console.log(signInData?.error);
       toast({
         variant: "destructive",
-        title: error.message,
+        title: `${signInData?.error}`,
       });
-      console.log(error);
+    } else {
+      router.push("/");
+      router.refresh();
+      toast({
+        variant: "default",
+        title: "logged in successfully",
+      });
     }
+
+    console.log(signInData);
+
+    // try {
+    //   const res = await axios.post("/api/users/login", values);
+    //   router.push("/");
+    //   router.refresh();
+    // } catch (error: any) {
+    //   console.log(error);
+    //   toast({
+    //     variant: "destructive",
+    //     title: error.message,
+    //   });
+    //   console.log(error);
+    // }
   }
 
   return (

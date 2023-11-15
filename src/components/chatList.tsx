@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import axios from "axios";
 import { useAuthContext } from "@/context/authContext";
+import { Session } from "@/types";
 
 const plans = [
   {
@@ -40,9 +41,8 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ChatList() {
-  const { user } = useAuthContext();
-  console.log(user);
+export default function ChatList({ session }: { session: Session | null }) {
+  const user = session?.user;
 
   const [selected, setSelected] = useState(plans[0]);
 
@@ -50,7 +50,7 @@ export default function ChatList() {
     (async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/chat/getuserchat/${user.id}`
+          `http://localhost:3000/api/chat/getuserchat/${user?.id}`
         );
         console.log(res.data);
       } catch (error) {
