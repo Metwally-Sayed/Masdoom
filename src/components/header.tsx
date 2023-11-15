@@ -10,16 +10,16 @@ import { User, useAuthContext } from "@/context/authContext";
 import jwt from "jsonwebtoken";
 
 export default function Header() {
-  // const { setUser } = useAuthContext();
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await axios.get("/api/users/me");
-  //     const { token } = await res.data;
+  const { setUser } = useAuthContext();
+  useEffect(() => {
+    (async () => {
+      const res = await axios.get("/api/users/me");
+      const { token } = await res.data;
 
-  //     const decodedToken = jwt.decode(token);
-  //     setUser(decodedToken as User);
-  //   })();
-  // }, []);
+      const decodedToken = jwt.decode(token);
+      setUser(decodedToken as User);
+    })();
+  }, []);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
