@@ -12,11 +12,11 @@ export async function middleware(request: NextRequest) {
 
   const ispublic = path === "/login" || path === "/signup" || path === "/";
 
-  if (ispublic && verifyiedtoken) {
+  if (ispublic && token) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }
 
-  if (!ispublic && !verifyiedtoken) {
+  if (!ispublic && !token) {
     return NextResponse.redirect(new URL("/login", request.nextUrl));
   }
 }
