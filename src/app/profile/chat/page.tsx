@@ -1,10 +1,10 @@
-import Chatbox from "../../../components/ChatBox";
+import ChatBox from "@/components/ChatBox";
 import React from "react";
 
 type Props = {};
 
 const Page = (props: Props) => {
-  return <Chatbox />;
+  return <ChatBox />;
 };
 
 export default Page;
