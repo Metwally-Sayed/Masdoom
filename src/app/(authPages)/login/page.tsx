@@ -1,11 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,9 +15,9 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { loginFormSchema } from "@/validationSchemas/loginValidation";
 import { useRouter } from "next/navigation";
-
 import axios from "axios";
 import { Toaster } from "@/components/ui/toaster";
+import { User } from "../../../context/authContext";
 
 type Props = {};
 
@@ -34,13 +32,13 @@ const Page = (props: Props) => {
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     try {
       const res = await axios.post("/api/users/login", values);
-      console.log(res.data);
       router.push("/");
     } catch (error: any) {
+      console.log(error);
+
       toast({
         variant: "destructive",
         title: error.message,
-        description: error.response.data.message,
       });
       console.log(error);
     }
