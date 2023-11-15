@@ -6,9 +6,9 @@ import jwt from "jsonwebtoken";
 export async function GET(req: NextRequest) {
   try {
     const cookiesStore = cookies();
-    const currentToken = cookiesStore.get("token")?.value as string;
+    const currentToken = cookiesStore.get("masdoomToken")?.value as string;
 
-    console.log(cookiesStore.get("token")?.value);
+    console.log(cookiesStore.get("masdoomToken")?.value);
 
     const validToken = jwt.verify(currentToken, process.env.TOKEN_SECRET!);
 
@@ -23,8 +23,6 @@ export async function GET(req: NextRequest) {
       { message: "token is valid ", token: currentToken },
       { status: 201 }
     );
-
-    response.cookies.set("token", currentToken, { httpOnly: true });
 
     return response;
   } catch (error) {

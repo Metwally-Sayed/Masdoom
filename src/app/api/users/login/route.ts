@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       { message: "Login Successful", token: token },
       { status: 201 }
     );
-    response.cookies.set("token", token, { httpOnly: true });
+    response.cookies.set("masdoomToken", token, { httpOnly: true });
     return response;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
