@@ -40,7 +40,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Chatlist() {
+export default function ChatList() {
   const { user } = useAuthContext();
   console.log(user);
 

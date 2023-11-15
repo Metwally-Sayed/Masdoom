@@ -2,8 +2,8 @@ import React from "react";
 
 type Props = {};
 
-const Chatbox = (props: Props) => {
+const ChatBox = (props: Props) => {
   return <div>Chatbox</div>;
 };
 
-export default Chatbox;
+export default ChatBox;

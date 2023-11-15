@@ -1,4 +1,4 @@
-import Chatbox from "@/components/chatBox";
+import Chatbox from "@/components/ChatBox";
 import React from "react";
 
 type Props = {};
