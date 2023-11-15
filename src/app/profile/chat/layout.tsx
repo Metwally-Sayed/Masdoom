@@ -3,7 +3,7 @@ import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/nextAuth";
-import ChatList from "@/components/ChatList";
+import ChatList from "@/components/chatList";
 
 type Props = {
   children: React.ReactNode;
