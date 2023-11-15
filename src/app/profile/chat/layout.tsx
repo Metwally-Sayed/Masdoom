@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Chatlist from "@/components/ChatList";
+import Chatlist from "../../../components/ChatList";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/nextAuth";
 
